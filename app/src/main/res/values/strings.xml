@@ -11,6 +11,8 @@
     <string name="dat">Tomorrow</string>
     <string name="description">Description</string>
     <string name="title">Add Title</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
     <string name="target">Timeline</string>
     <string name="edtitle">What You Wanna Do ?</string>
     <string name="eddesc">How Do You Do That ?</string>
@@ -19,4 +21,6 @@
     <string name="btupd">Update</string>
     <string name="btdel">Delete</string>
     <string name="btcanc">Cancel</string>
+    <string name="btlogin">SIGN IN</string>
+    <string name="btregister">SIGN UP</string>
 </resources>
