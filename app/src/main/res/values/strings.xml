@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MTL</string>
+    <string name="app_name">MyTodoList</string>
     <string name="map_key" translatable="false">AIzaSyAX390dB4hm11bZQpi-StujtcERETX772s</string>
     <string name="title_page">My To Do List</string>
     <string name="create">The Task</string>

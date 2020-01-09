@@ -18,7 +18,7 @@ import java.util.List;
 
 public class RequestAdapterRecyclerView extends RecyclerView.Adapter<RequestAdapterRecyclerView.MyViewHolder> {
 
-    private List<Task> moviesList;
+    private List<Task> taskList;
     private Activity mActivity;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -34,8 +34,8 @@ public class RequestAdapterRecyclerView extends RecyclerView.Adapter<RequestAdap
         }
     }
 
-    public RequestAdapterRecyclerView(List<Task> moviesList, Activity activity) {
-        this.moviesList = moviesList;
+    public RequestAdapterRecyclerView(List<Task> taskList, Activity activity) {
+        this.taskList = taskList;
         this.mActivity = activity;
     }
 
@@ -49,21 +49,21 @@ public class RequestAdapterRecyclerView extends RecyclerView.Adapter<RequestAdap
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        final Task movie = moviesList.get(position);
+        final Task task = taskList.get(position);
 
-        holder.tv_title.setText(movie.getTitle());
-        holder.tv_desc.setText(movie.getDesc());
-        holder.tv_date.setText(movie.getDate());
+        holder.tv_title.setText(task.getTitle());
+        holder.tv_desc.setText(task.getDesc());
+        holder.tv_date.setText(task.getDate());
 
         holder.rl_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent goDetail = new Intent(mActivity, MainActivity.class);
-                goDetail.putExtra("id", movie.getKey());
-                goDetail.putExtra("title", movie.getTitle());
-                goDetail.putExtra("desc", movie.getDesc());
-                goDetail.putExtra("date", movie.getDate());
+                goDetail.putExtra("id", task.getKey());
+                goDetail.putExtra("title", task.getTitle());
+                goDetail.putExtra("desc", task.getDesc());
+                goDetail.putExtra("date", task.getDate());
 
                 mActivity.startActivity(goDetail);
 
@@ -75,7 +75,7 @@ public class RequestAdapterRecyclerView extends RecyclerView.Adapter<RequestAdap
 
     @Override
     public int getItemCount() {
-        return moviesList.size();
+        return taskList.size();
     }
 
 

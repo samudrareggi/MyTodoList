@@ -7,9 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -37,7 +35,6 @@ public class ListActivity extends AppCompatActivity {
 
     private RecyclerView rc_list_request;
     private ProgressDialog loading;
-    private Button fab_add;
 
     FloatingActionButton fab_edit, fab_addd, fab_map;
     Animation fabOpen, fabClose, rotateFw, rotateRv;
@@ -57,7 +54,6 @@ public class ListActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance().getReference();
 
         rc_list_request = findViewById(R.id.rc_list_request);
-        fab_add = findViewById(R.id.fab_add);
 
         fab_edit = (FloatingActionButton) findViewById(R.id.fab_edit);
         fab_addd = (FloatingActionButton) findViewById(R.id.fab_addd);
@@ -120,15 +116,15 @@ public class ListActivity extends AppCompatActivity {
                 daftarTask = new ArrayList<>();
                 for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
                     /**
-                     * Mapping data pada DataSnapshot ke dalam object Wisata
-                     * Dan juga menyimpan primary key pada object Wisata
+                     * Mapping data pada DataSnapshot ke dalam DATA
+                     * Dan juga menyimpan primary key pada DATA
                      * untuk keperluan Edit dan Delete data
                      */
                     Task task = noteDataSnapshot.getValue(Task.class);
                     task.setKey(noteDataSnapshot.getKey());
 
                     /**
-                     * Menambahkan object Wisata yang sudah dimapping
+                     * Menambahkan DATA yang sudah dimapping
                      * ke dalam ArrayList
                      */
                     daftarTask.add(task);
