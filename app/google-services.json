@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "374227278816",
+    "firebase_url": "https://mtlfirebaseproject.firebaseio.com",
+    "project_id": "mtlfirebaseproject",
+    "storage_bucket": "mtlfirebaseproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:374227278816:android:fcf7be8e5d94ab0a4a6985",
+        "android_client_info": {
+          "package_name": "com.reggisam.mtl"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "374227278816-a1rbk52j4n4if47iupjbsc8hcg9qooks.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.reggisam.mtl",
+            "certificate_hash": "2f090b9aed8a5b2440989951d2efe4a4cac944e4"
+          }
+        },
+        {
+          "client_id": "374227278816-16acuasq36vna13fsj8ngflhqvu2anb6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3YoZHpmcmY8FN-VLXQXvEbfyzhHckteo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "374227278816-16acuasq36vna13fsj8ngflhqvu2anb6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

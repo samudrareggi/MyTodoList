@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">MTL</string>
+    <string name="title_page">My To Do List</string>
+    <string name="create">The Task</string>
+    <string name="edit">Edit Task</string>
+    <string name="subtitle_page">Dont Forget Me :)</string>
+    <string name="end_page">No More Does</string>
+    <string name="set">TA</string>
+    <string name="des">Tugas Akhir</string>
+    <string name="dat">Tomorrow</string>
+    <string name="description">Description</string>
+    <string name="title">Add Title</string>
+    <string name="target">Timeline</string>
+    <string name="edtitle">What You Wanna Do ?</string>
+    <string name="eddesc">How Do You Do That ?</string>
+    <string name="edtarget">When You Will Finish It ?</string>
+    <string name="btsave">Save</string>
+    <string name="btupd">Update</string>
+    <string name="btdel">Delete</string>
+    <string name="btcanc">Cancel</string>
+</resources>
