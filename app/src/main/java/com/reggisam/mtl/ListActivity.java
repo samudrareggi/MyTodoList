@@ -5,20 +5,25 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.reggisam.mtl.adapter.RequestAdapterRecyclerView;
+import com.reggisam.mtl.map.MapActivity;
 import com.reggisam.mtl.model.Task;
 
 import java.util.ArrayList;
@@ -33,6 +38,10 @@ public class ListActivity extends AppCompatActivity {
     private RecyclerView rc_list_request;
     private ProgressDialog loading;
     private Button fab_add;
+
+    FloatingActionButton fab_edit, fab_addd, fab_map;
+    Animation fabOpen, fabClose, rotateFw, rotateRv;
+    boolean isOpen = false;
 
     TextView titlepage, subtitle, endtitle;
 
@@ -50,6 +59,14 @@ public class ListActivity extends AppCompatActivity {
         rc_list_request = findViewById(R.id.rc_list_request);
         fab_add = findViewById(R.id.fab_add);
 
+        fab_edit = (FloatingActionButton) findViewById(R.id.fab_edit);
+        fab_addd = (FloatingActionButton) findViewById(R.id.fab_addd);
+        fab_map = (FloatingActionButton) findViewById(R.id.fab_map);
+        fabOpen = AnimationUtils.loadAnimation(this, R.anim.fab_open);
+        fabClose = AnimationUtils.loadAnimation(this, R.anim.fab_close);
+        rotateFw = AnimationUtils.loadAnimation(this, R.anim.rotate_forward);
+        rotateRv = AnimationUtils.loadAnimation(this, R.anim.rotate_reverse);
+
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         rc_list_request.setLayoutManager(mLayoutManager);
         rc_list_request.setItemAnimator(new DefaultItemAnimator());
@@ -64,6 +81,34 @@ public class ListActivity extends AppCompatActivity {
         titlepage.setTypeface(Osmane);
         subtitle.setTypeface(Osmane);
         endtitle.setTypeface(Osmane);
+
+        fab_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                animateFab();
+            }
+        });
+
+        fab_addd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                animateFab();
+
+                startActivity(new Intent(ListActivity.this, MainActivity.class)
+                        .putExtra("id", "")
+                        .putExtra("title", "")
+                        .putExtra("desc", "")
+                        .putExtra("date", ""));
+            }
+        });
+
+        fab_map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                animateFab();
+                startActivity(new Intent(ListActivity.this, MapActivity.class));
+            }
+        });
 
         database.child("Task").addValueEventListener(new ValueEventListener() {
             @Override
@@ -109,16 +154,24 @@ public class ListActivity extends AppCompatActivity {
                 loading.dismiss();
             }
         });
+    }
 
-        fab_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(ListActivity.this, MainActivity.class)
-                        .putExtra("id", "")
-                        .putExtra("title", "")
-                        .putExtra("desc", "")
-                        .putExtra("date", ""));
-            }
-        });
+    private void animateFab(){
+        if (isOpen)
+        {
+            fab_edit.startAnimation(rotateFw);
+            fab_addd.startAnimation(fabClose);
+            fab_map.startAnimation(fabClose);
+            fab_addd.setClickable(false);
+            fab_map.setClickable(false);
+            isOpen=false;
+        } else{
+            fab_edit.startAnimation(rotateRv);
+            fab_addd.startAnimation(fabOpen);
+            fab_map.startAnimation(fabOpen);
+            fab_addd.setClickable(true);
+            fab_map.setClickable(true);
+            isOpen=true;
+        }
     }
 }
