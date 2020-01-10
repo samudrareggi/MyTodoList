@@ -38,7 +38,7 @@ public class ListActivity extends AppCompatActivity {
     private RecyclerView rc_list_request;
     private ProgressDialog loading;
 
-    FloatingActionButton fab_edit, fab_addd, fab_map;
+    FloatingActionButton fab_edit, fab_addd, fab_map, fab_img;
     Animation fabOpen, fabClose, rotateFw, rotateRv;
     boolean isOpen = false;
 
@@ -57,9 +57,10 @@ public class ListActivity extends AppCompatActivity {
 
         rc_list_request = findViewById(R.id.rc_list_request);
 
-        fab_edit = (FloatingActionButton) findViewById(R.id.fab_edit);
-        fab_addd = (FloatingActionButton) findViewById(R.id.fab_addd);
-        fab_map = (FloatingActionButton) findViewById(R.id.fab_map);
+        fab_edit = findViewById(R.id.fab_edit);
+        fab_addd = findViewById(R.id.fab_addd);
+        fab_map = findViewById(R.id.fab_map);
+        fab_img = findViewById(R.id.fab_img);
         fabOpen = AnimationUtils.loadAnimation(this, R.anim.fab_open);
         fabClose = AnimationUtils.loadAnimation(this, R.anim.fab_close);
         rotateFw = AnimationUtils.loadAnimation(this, R.anim.rotate_forward);
@@ -105,6 +106,14 @@ public class ListActivity extends AppCompatActivity {
             public void onClick(View v) {
                 animateFab();
                 startActivity(new Intent(ListActivity.this, MapActivity.class));
+            }
+        });
+
+        fab_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                animateFab();
+                startActivity(new Intent(ListActivity.this, ImageActivity.class));
             }
         });
 
@@ -160,6 +169,7 @@ public class ListActivity extends AppCompatActivity {
             fab_edit.startAnimation(rotateFw);
             fab_addd.startAnimation(fabClose);
             fab_map.startAnimation(fabClose);
+            fab_img.startAnimation(fabClose);
             fab_addd.setClickable(false);
             fab_map.setClickable(false);
             isOpen=false;
@@ -167,6 +177,7 @@ public class ListActivity extends AppCompatActivity {
             fab_edit.startAnimation(rotateRv);
             fab_addd.startAnimation(fabOpen);
             fab_map.startAnimation(fabOpen);
+            fab_img.startAnimation(fabOpen);
             fab_addd.setClickable(true);
             fab_map.setClickable(true);
             isOpen=true;

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="210dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="14dp"
+        android:contentDescription="TODO"
+        app:layout_constraintBottom_toTopOf="@+id/btBright"
+        app:layout_constraintEnd_toEndOf="@+id/btBright"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/credit" />
+
+    <Button
+        android:id="@+id/btRotate"
+        android:onClick="tekan"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="74dp"
+        android:background="@drawable/bg_bt_save"
+        android:text="@string/rotate"
+        android:textColor="#FFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btGrey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/btGrey"
+        android:onClick="tekan3"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="17dp"
+        android:background="@drawable/bg_bt_save"
+        android:text="@string/grey"
+        android:textColor="#FFF"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btRotate"
+        app:layout_constraintEnd_toStartOf="@+id/btBright"
+        app:layout_constraintStart_toEndOf="@+id/btRotate" />
+
+    <Button
+        android:id="@+id/btBright"
+        android:onClick="tekan2"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="88dp"
+        android:background="@drawable/bg_bt_save"
+        android:text="@string/bright"
+        android:textColor="#FFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btGrey"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

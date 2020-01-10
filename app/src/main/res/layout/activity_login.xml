@@ -93,7 +93,7 @@
             <EditText
                 android:id="@+id/et_pass"
                 android:background="@drawable/bg_input_task"
-                android:inputType="text"
+                android:inputType="textPassword"
                 android:paddingLeft="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
@@ -115,13 +115,21 @@
 
     </LinearLayout>
 
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Remember me" />
+
     <Button
         android:id="@+id/btLog"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="80dp"
         android:text="@string/btlogin"
         android:textColor="#FFF"
         android:textSize="22sp"

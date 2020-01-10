@@ -23,4 +23,10 @@
     <string name="btcanc">Cancel</string>
     <string name="btlogin">SIGN IN</string>
     <string name="btregister">SIGN UP</string>
+    <string name="rotate">ROTATE</string>
+    <string name="grey">GREYSCALE</string>
+    <string name="bright">BRIGHTNESS</string>
+    <string name="checkbox">com.reggisam.mtl.login.checkbox</string>
+    <string name="cbEmail">com.reggisam.mtl.login.email</string>
+    <string name="cbPassword">com.reggisam.mtl.login.password</string>
 </resources>

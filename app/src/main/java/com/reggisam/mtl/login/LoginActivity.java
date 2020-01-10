@@ -1,15 +1,18 @@
 package com.reggisam.mtl.login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,12 +28,17 @@ public class LoginActivity extends AppCompatActivity {
     String email_txt, password_txt;
     private FirebaseAuth mAuth;
 
+    private SharedPreferences mPreferences;
+    private SharedPreferences.Editor mEditor;
+    private CheckBox checkBox;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         btn_register = findViewById(R.id.btReg);
         btn_login = findViewById(R.id.btLog);
+        checkBox = findViewById(R.id.checkBox);
         password_et = findViewById(R.id.et_pass);
         email_et = findViewById(R.id.et_email);
         mAuth = FirebaseAuth.getInstance();
@@ -65,6 +73,25 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                             }
                         });
+                if (checkBox.isChecked()){
+                    mEditor.putString(getString(R.string.checkbox),"True");
+                    mEditor.commit();
+
+                    mEditor.putString(getString(R.string.cbEmail),email_txt);
+                    mEditor.commit();
+
+                    mEditor.putString(getString(R.string.cbPassword),password_txt);
+                    mEditor.commit();
+                }else {
+                    mEditor.putString(getString(R.string.checkbox),"False");
+                    mEditor.commit();
+
+                    mEditor.putString(getString(R.string.cbEmail),"");
+                    mEditor.commit();
+
+                    mEditor.putString(getString(R.string.cbPassword),"");
+                    mEditor.commit();
+                }
             }
         });
 
@@ -75,5 +102,24 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mPreferences.edit();
+        checkSharedPreferences();
+    }
+
+    private void checkSharedPreferences(){
+        String checkbox = mPreferences.getString(getString(R.string.checkbox), "False");
+        String cbEmail = mPreferences.getString(getString(R.string.cbEmail), "");
+        String cbPassword = mPreferences.getString(getString(R.string.cbPassword), "");
+
+        email_et.setText(cbEmail);
+        password_et.setText(cbPassword);
+
+        if (checkbox.equals("True")){
+            checkBox.setChecked(true);
+        }else {
+            checkBox.setChecked(false);
+        }
     }
 }
